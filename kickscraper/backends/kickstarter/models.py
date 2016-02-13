@@ -3,35 +3,18 @@ from kickscraper.backends.kickstarter import client
 
 class KickStarterProject:
 
-    def __init__(self, uid, name):
-        self.uid = uid
+    def __init__(self, name):
         self.name = name
         self.project_json = None
+        self.load()
 
-    @property
-    def title(self):
-        return self.name
-
-    @property
-    def goal(self):
-        return self._get_data('goal')
-
-    @property
-    def author(self):
-        return self._get_data('creator')['name']
-
-    @property
-    def pledged(self):
-        return self._get_data('pledged')
-
-    @property
-    def time_to_go(self):
-        return self._get_data('deadline')
+    def __getattr__(self, name):
+        return self._get_data(name)
 
     def _get_data(self, key):
         if not self.project_json:
-            self.reload()
+            self.load()
         return self.project_json[key]
 
-    def reload(self):
+    def load(self):
         self.project_json = client.KickStarter().search_project(self.name)

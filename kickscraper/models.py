@@ -3,18 +3,12 @@ from kickscraper.backends.kickstarter import models
 DEFAULT_BACKEND = 'KickStarterProject'
 
 
+# TODO: Define a standard interface to access attributes from different backends,
+# its okay to let access anything but need to provide a standard/unified one.
 class Project:
 
-    def __init__(self, uid, name, backend=None):
-        self.connector = getattr(models, DEFAULT_BACKEND)(uid, name)
+    def __init__(self, name, backend=None):
+        self.connector = getattr(models, DEFAULT_BACKEND)(name)
 
-    @property
-    def title(self):
-        return self.connector.title
-
-    @property
-    def time_to_go(self):
-        return self.connector.time_to_go
-
-    def get_author():
-        pass
+    def __getattr__(self, name):
+        return getattr(self.connector, name)
