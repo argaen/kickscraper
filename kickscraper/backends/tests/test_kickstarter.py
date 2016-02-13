@@ -14,6 +14,7 @@ def p():
     return models.KickStarterProject(uid=1946925378, name="Mamma Coal-Reimagining Willie Nelson's Outlaw Concept Album")
 
 
+@pytest.mark.kickstarter
 class TestKickStarterClient:
 
     def test_get_stats(self, k):
@@ -35,6 +36,7 @@ class TestKickStarterClient:
             assert k in d['projects'][0]
 
 
+@pytest.mark.kickstarter
 class TestKickStarterModel:
 
     def test_create(self):
@@ -52,7 +54,7 @@ class TestKickStarterModel:
         assert type(p.author) == str
 
     def test_get_pledged(self, p):
-        assert type(p.pledged) == str
+        assert type(p.pledged) == float
 
     def test_get_time_to_go(self, p):
         assert type(p.time_to_go) == int

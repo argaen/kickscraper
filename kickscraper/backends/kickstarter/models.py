@@ -9,6 +9,10 @@ class KickStarterProject:
         self.project_json = None
 
     @property
+    def title(self):
+        return self.name
+
+    @property
     def goal(self):
         return self._get_data('goal')
 
@@ -22,7 +26,7 @@ class KickStarterProject:
 
     @property
     def time_to_go(self):
-        return self._get_data('time_to_go')
+        return self._get_data('deadline')
 
     def _get_data(self, key):
         if not self.project_json:
