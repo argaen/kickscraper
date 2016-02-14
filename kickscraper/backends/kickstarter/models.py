@@ -12,7 +12,16 @@ class KickStarterProject:
     def __init__(self, name):
         self.name = name
         self.project_json = None
+        self._rewards = None
         self.load()
+
+    def load(self):
+        self.project_json = client.KickStarter().search_project(self.name)
+
+    def get_rewards(self, force_reload=False):
+        if not self._rewards or force_reload:
+            self._rewards = client.KickStarter().get_rewards(self.slug, self.creator["slug"])
+        return self._rewards
 
     def __getattr__(self, name):
         return self._get_data(name)
@@ -21,6 +30,3 @@ class KickStarterProject:
         if not self.project_json:
             self.load()
         return self.project_json.get(self.attributes_mapping.get(key) or key)
-
-    def load(self):
-        self.project_json = client.KickStarter().search_project(self.name)

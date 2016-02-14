@@ -73,6 +73,9 @@ Internally, the `Project` class uses the `search_project` to fetch the project a
 # TODO
 
 - Rewards query.
+- Tests need to be more intelligent. Mb using parametrized pytest tests or so. Need to
+  reuse the ones from main and from the backends or something...
+- Add logs.
 - Allow to load projects given a uid or url?.
 - More intelligent way to load projects (check if search by popularity exists).
 - Allow dynamic and multiple backends for the Project class.
