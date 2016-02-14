@@ -8,5 +8,4 @@ def search_project(terms):
 
 
 def search_projects(terms):
-    print(KickStarter().search_projects(terms))
     return KickStarter().search_projects(terms)
