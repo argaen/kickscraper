@@ -35,6 +35,10 @@ class TestKickStarterClient:
         for k in subkeys:
             assert k in d['projects'][0]
 
+    def test_get_rewards(self, k):
+        rewards = k.get_rewards("hi", "ho")
+        assert len(rewards) > 0
+
 
 @pytest.mark.kickstarter
 class TestKickStarterModel:

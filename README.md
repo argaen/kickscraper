@@ -1,6 +1,6 @@
 # KickScraper
 
-This project offers an API to consult Kickstarter projects information. It does that by scrapping the website so this software is provided as it is. No guarantee is assured.
+This project offers an API to consult Kickstarter projects information. It does that by scrapping the website or accesing undocumented APIs so this software is provided as it is. No guarantee is assured.
 
 To check everything is working correctly and the needed data is able to be pulled from the Kickstarter page, from the project root execute:
 
@@ -10,7 +10,7 @@ To check everything is working correctly and the needed data is able to be pulle
 
 The normal usage flow with this package is to search for a project and then access its information. Some examples:
 
-```
+```python
 >>> from kickscraper.models import Project
 >>> p = Project(name='Exploding kittens')
 >>> p.title
@@ -39,11 +39,11 @@ The normal usage flow with this package is to search for a project and then acce
 {'id': 1281334714, 'name': 'Elan Lee', 'slug': 'elanlee', 'urls': {'api': {'user': 'https://api.kickstarter.com/v1/users/1281334714?signature=1455539957.142a29e448e4410d7571985d81f89f7820387092'}, 'web': {'user': 'https://www.kickstarter.com/profile/elanlee'}}, 'avatar': {'small': 'https://ksr-ugc.imgix.net/avatars/195345/mmotel_elan_lee_05_on_white_0592-2.original.jpg?v=1419440819&w=80&h=80&fit=crop&auto=format&q=92&s=7a5f8ccef6aec840b071b227f0c8857f', 'medium': 'https://ksr-ugc.imgix.net/avatars/195345/mmotel_elan_lee_05_on_white_0592-2.original.jpg?v=1419440819&w=160&h=160&fit=crop&auto=format&q=92&s=b7f47cefe817c8e4d60e8fb6bc59312b', 'thumb': 'https://ksr-ugc.imgix.net/avatars/195345/mmotel_elan_lee_05_on_white_0592-2.original.jpg?v=1419440819&w=40&h=40&fit=crop&auto=format&q=92&s=fe45920ced0997320f5d5a60321fbde7'}}
 ```
 
-So you can see, that for the KickStarter backend, there is a `project_json` attribute that allows to retrieve the extra information retrieved from the query to the HTTP endpoint. You can also access this attributs in a normal way with `p.connector.<attribute_name>`.
+For the KickStarter backend, there is a `project_json` attribute that allows to retrieve the extra information retrieved from the query to the HTTP endpoint. You can also access this attributs in a normal way with `p.connector.<attribute_name>`.
 
 There are also a couple endpoints that allow you to search for projects (`search_projects`) and fetch the first one from the returned list (`search_project`):
 
-```
+```python
 >>> kickscraper.search_projects("Kittens")['total_hits']
 116
 >>> kickscraper.search_project("Kittens")["name"]
@@ -58,16 +58,16 @@ Internally, the `Project` class uses the `search_project` to fetch the project a
 
 ## Project
 
-- Project.uid: int
-- Project.title: str
-- Project.photo: dict
-- Project.pledged: float
-- Project.goal: float
-- Project.state: str
-- Project.currency: str
-- Project.launched: int (unix time)
-- Project.deadline: int (unix time)
-- Project.backers\_count: int
+- **Project.uid: int**
+- **Project.title: str**
+- **Project.photo: dict**
+- **Project.pledged: float**
+- **Project.goal: float**
+- **Project.state: str**
+- **Project.currency: str**
+- **Project.launched: int (unix time)**
+- **Project.deadline: int (unix time)**
+- **Project.backers\_count: int**
 
 
 # TODO
