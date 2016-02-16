@@ -17,8 +17,8 @@ class KickStarter:
     def search_project(self, terms):
         return self.search_projects(terms)['projects'][0]
 
-    def get_rewards(self, name, creator):
-        return scraper.get_json_rewards(name, creator)
+    def get_rewards(self, creator, name):
+        return scraper.get_json_rewards(creator, name)
 
     def _get_project_stats(self, uid):
         url = os.path.join(API_ROOT, PROJECTS_URL, uid, 'stats.json')

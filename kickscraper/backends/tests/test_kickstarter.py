@@ -36,7 +36,7 @@ class TestKickStarterClient:
             assert k in d['projects'][0]
 
     def test_get_rewards(self, k):
-        rewards = k.get_rewards("hi", "ho")
+        rewards = k.get_rewards("elanlee", "exploding-kittens")
         assert len(rewards) > 0
 
 

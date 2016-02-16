@@ -18,9 +18,14 @@ class KickStarterProject:
     def load(self):
         self.project_json = client.KickStarter().search_project(self.name)
 
-    def get_rewards(self, force_reload=False):
+    def get_rewards(self, force_reload=True):
         if not self._rewards or force_reload:
-            self._rewards = client.KickStarter().get_rewards(self.slug, self.creator["slug"])
+            self._rewards = client.KickStarter().get_rewards(self.creator["slug"], self.slug)
+        return self._rewards
+
+    def get_early_birds(self, force_reload=True):
+        if not self._rewards or force_reload:
+            self._rewards = client.KickStarter().get_rewards(self.creator["slug"], self.slug)
         return self._rewards
 
     def __getattr__(self, name):
