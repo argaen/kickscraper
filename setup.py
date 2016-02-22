@@ -9,7 +9,7 @@ with open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='kickscraper',
-    version='0.1.0',
+    version='0.1.1',
     description='A scraper for Crowdfunding projects',
     long_description=long_description,
     url='https://github.com/argaen/kickscraper',

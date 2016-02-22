@@ -37,7 +37,17 @@ class TestKickStarterClient:
 
     def test_get_rewards(self, k):
         rewards = k.get_rewards("elanlee", "exploding-kittens")
-        assert len(rewards) > 0
+        assert len(rewards) == 4
+
+    @pytest.mark.parametrize("creator, project, expected, available, all_gone", [
+        ("elanlee", "exploding-kittens", 2, 0, 2),
+        ("carrastasney", "mamma-coal-reimagining-willie-nelsons-outlaw-conce", 7, 7, 0),
+    ])
+    def test_get_early_birds(self, k, creator, project, expected, available, all_gone):
+        early_birds = k.get_early_birds(creator, project)
+        assert len(early_birds) == expected
+        assert len([x for x, v in early_birds.items() if v["backers_left"] > 0]) == available
+        assert len([x for x, v in early_birds.items() if v["backers_left"] == 0]) == all_gone
 
 
 @pytest.mark.kickstarter

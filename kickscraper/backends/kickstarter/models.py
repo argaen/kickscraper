@@ -13,6 +13,7 @@ class KickStarterProject:
         self.name = name
         self.project_json = None
         self._rewards = None
+        self._early_birds = None
         self.load()
 
     def load(self):
@@ -24,9 +25,9 @@ class KickStarterProject:
         return self._rewards
 
     def get_early_birds(self, force_reload=True):
-        if not self._rewards or force_reload:
-            self._rewards = client.KickStarter().get_rewards(self.creator["slug"], self.slug)
-        return self._rewards
+        if not self._early_birds or force_reload:
+            self._early_birds = client.KickStarter().get_early_birds(self.creator["slug"], self.slug)
+        return self._early_birds
 
     def __getattr__(self, name):
         return self._get_data(name)

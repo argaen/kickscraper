@@ -46,6 +46,15 @@ The normal usage flow with this package is to search for a project and then acce
     'description': "THE DECK OF LEGENDS\nEverything from the previous reward PLUS each of the game creators will draw you a custom card. (We apologize in advance for Elan's drawing skills.)\n\nLess",
     'title': 'Pledge $500 or more\n\n\nAbout $500 USD',
     'uid': '3571711'}}
+>>> p.early_birds
+{'3531562': {'backers_left': 0,
+  'description': "THE COLLECTOR'S DECK\nTwo copies of both decks from the previous reward but one of each will be signed by the creators of the game.  (So you don't have to ruin the fancy signed decks with your filthy game playing hands.)\n\nLess",
+  'title': 'Pledge $100 or more',
+  'uid': '3531562'},
+ '3571711': {'backers_left': 0,
+  'description': "THE DECK OF LEGENDS\nEverything from the previous reward PLUS each of the game creators will draw you a custom card. (We apologize in advance for Elan's drawing skills.)\n\nLess",
+  'title': 'Pledge $500 or more',
+  'uid': '3571711'}}
 ```
 
 For the KickStarter backend, there is a `project_json` attribute that allows to retrieve the extra information retrieved from the query to the HTTP endpoint. You can also access this attributs in a normal way with `p.connector.<attribute_name>`.
@@ -87,11 +96,11 @@ Internally, the `Project` class uses the `search_project` to fetch the project a
 - **Project.deadline: int (unix time)**
 - **Project.backers\_count: int**
 - **Project.rewards: dict**
+- **Project.early\_birds: dict**
 
 
 # TODO
 
-- Early birds query.
 - Tests need to be more intelligent. Mb using parametrized pytest tests or so. Need to
   reuse the ones from main and from the backends or something...
 - Add logs.
