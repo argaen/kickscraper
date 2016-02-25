@@ -1,7 +1,8 @@
 # TODO: Define a standard interface to access attributes from different backends,
 # its okay to let access anything but need to provide a standard/unified one.
-from kickscraper import DEFAULT_BACKEND
-from kickscraper.backends.kickstarter import models
+from .backends.kickstarter import models
+
+DEFAULT_BACKEND = 'KickStarterProject'
 
 
 class Project:

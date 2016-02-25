@@ -1,6 +1,6 @@
 # TODO: Need to improve this to allow full paths in strings!
-from kickscraper.backends.kickstarter.client import KickStarter
-DEFAULT_BACKEND = 'KickStarterProject'
+from .backends.kickstarter.client import KickStarter
+from .models import Project
 
 
 def search_project(terms):

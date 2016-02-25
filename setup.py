@@ -1,21 +1,20 @@
-import os
 from setuptools import setup
-
-here = os.path.abspath(os.path.dirname(__file__))
-
-with open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
-    long_description = f.read()
 
 
 setup(
     name='kickscraper',
-    version='0.1.1',
+    version='0.1.2',
     description='A scraper for Crowdfunding projects',
-    long_description=long_description,
     url='https://github.com/argaen/kickscraper',
 
     author='argaen',
     license='MIT',
+
+    keywords=['kickstarter', 'api', 'crowdfunding', 'projects'],
+
+    packages=['kickscraper'],
+
+    install_requires=['requests>=2.9.1', 'beautifulsoup4>=4.4.1'],
 
     classifiers=[
         'Development Status :: 4 - Beta',
@@ -24,11 +23,7 @@ setup(
         'License :: OSI Approved :: MIT License',
 
         'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 2',
     ],
 
-    keywords='kickstarter api crowdfunding projects',
-
-    packages=['kickscraper'],
-
-    install_requires=['requests>=2.9.1', 'beautifulsoup>=4.4.1'],
 )

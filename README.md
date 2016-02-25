@@ -6,12 +6,16 @@ To check everything is working correctly and the needed data is able to be pulle
 
 `PYTHONPATH=. py.test`
 
+To install, just execute:
+
+`pip install kickscraper`
+
 # Usage
 
 The normal usage flow with this package is to search for a project and then access its information. Some examples:
 
 ```python
->>> from kickscraper.models import Project
+>>> from kickscraper import Project
 >>> p = Project(name='Exploding kittens')
 >>> p.title
 'Exploding Kittens'
@@ -101,9 +105,11 @@ Internally, the `Project` class uses the `search_project` to fetch the project a
 
 # TODO
 
+- Create an abstract class for the backends.
 - Tests need to be more intelligent. Mb using parametrized pytest tests or so. Need to
   reuse the ones from main and from the backends or something...
 - Add logs.
 - Allow to load projects given a uid or url?.
 - More intelligent way to load projects (check if search by popularity exists).
 - Allow dynamic and multiple backends for the Project class.
+    - Maybe best way would be to support it at instantiation time since a good use case would be to load projects from different sites.
