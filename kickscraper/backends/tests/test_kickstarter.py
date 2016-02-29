@@ -56,7 +56,7 @@ class TestKickStarterModel:
     def test_create(self):
         subkeys = ['id', 'photo', 'name', 'goal', 'pledged', 'state', 'deadline', 'launched_at', 'backers_count', 'usd_pledged', 'creator', 'currency_symbol', 'launched_at']
         p = models.KickStarterProject(name="Mamma Coal-Reimagining Willie Nelson's Outlaw Concept Album")
-        p.load()
+        p._reload()
         assert p.project_json is not None
         for k in subkeys:
             assert k in p.project_json

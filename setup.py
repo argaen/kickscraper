@@ -3,14 +3,14 @@ from setuptools import setup
 
 setup(
     name='kickscraper',
-    version='0.1.2',
+    version='0.1.3',
     description='A scraper for Crowdfunding projects',
     url='https://github.com/argaen/kickscraper',
 
     author='argaen',
     license='MIT',
 
-    keywords=['kickstarter', 'api', 'crowdfunding', 'projects'],
+    keywords=['kickstarter api crowdfunding projects'],
 
     packages=['kickscraper'],
 
