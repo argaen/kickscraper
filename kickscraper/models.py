@@ -1,14 +1,14 @@
-# TODO: Define a standard interface to access attributes from different backends,
-# its okay to let access anything but need to provide a standard/unified one.
-from .backends.kickstarter import models
+import importlib
 
-DEFAULT_BACKEND = 'KickStarterProject'
+DEFAULT_BACKEND = 'kickscraper.backends.kickstarter.models.KickStarterProject'
 
 
 class Project:
 
-    def __init__(self, name, backend=None):
-        self.connector = getattr(models, DEFAULT_BACKEND)(name)
+    def __init__(self, name, backend=DEFAULT_BACKEND):
+        self.name = name
+        module_name, class_name = backend.rsplit(".", 1)
+        self.connector = getattr(importlib.import_module(module_name), class_name)(name)
 
     @property
     def rewards(self):
