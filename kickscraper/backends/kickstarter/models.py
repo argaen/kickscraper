@@ -79,7 +79,7 @@ class KickStarterProject(BaseProject):
         if key in self.project_json:
             return self.project_json[self.attributes_mapping.get(key) or key]
         else:
-            raise AttributeError("KickStarter object has no attribute %s" % key)
+            raise AttributeError("KickStarterProject object has no attribute %s" % key)
 
     def _reload(self):
         self.project_json = client.KickStarter().search_project(self.name)

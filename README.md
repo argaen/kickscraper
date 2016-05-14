@@ -64,11 +64,9 @@ The normal usage flow with this package is to search for a project and then acce
 For the KickStarter backend, there is a `project_json` attribute that allows to retrieve the extra information retrieved from the query to the HTTP endpoint. You can also access this attributs in a normal way with `p.connector.<attribute_name>`.
 
 ```python
->>> p.connector
-<kickscraper.backends.kickstarter.models.KickStarterProject object at 0x7f2ace952b00>
->>> p.connector.project_json["creator"]
+>>> p.project_json["creator"]
 {'id': 1281334714, 'name': 'Elan Lee', 'slug': 'elanlee', 'urls': {'api': {'user': 'https://api.kickstarter.com/v1/users/1281334714?signature=1455539957.142a29e448e4410d7571985d81f89f7820387092'}, 'web': {'user': 'https://www.kickstarter.com/profile/elanlee'}}, 'avatar': {'small': 'https://ksr-ugc.imgix.net/avatars/195345/mmotel_elan_lee_05_on_white_0592-2.original.jpg?v=1419440819&w=80&h=80&fit=crop&auto=format&q=92&s=7a5f8ccef6aec840b071b227f0c8857f', 'medium': 'https://ksr-ugc.imgix.net/avatars/195345/mmotel_elan_lee_05_on_white_0592-2.original.jpg?v=1419440819&w=160&h=160&fit=crop&auto=format&q=92&s=b7f47cefe817c8e4d60e8fb6bc59312b', 'thumb': 'https://ksr-ugc.imgix.net/avatars/195345/mmotel_elan_lee_05_on_white_0592-2.original.jpg?v=1419440819&w=40&h=40&fit=crop&auto=format&q=92&s=fe45920ced0997320f5d5a60321fbde7'}}
->>> p.connector.creator
+>>> p.creator
 {'id': 1281334714, 'name': 'Elan Lee', 'slug': 'elanlee', 'urls': {'api': {'user': 'https://api.kickstarter.com/v1/users/1281334714?signature=1455539957.142a29e448e4410d7571985d81f89f7820387092'}, 'web': {'user': 'https://www.kickstarter.com/profile/elanlee'}}, 'avatar': {'small': 'https://ksr-ugc.imgix.net/avatars/195345/mmotel_elan_lee_05_on_white_0592-2.original.jpg?v=1419440819&w=80&h=80&fit=crop&auto=format&q=92&s=7a5f8ccef6aec840b071b227f0c8857f', 'medium': 'https://ksr-ugc.imgix.net/avatars/195345/mmotel_elan_lee_05_on_white_0592-2.original.jpg?v=1419440819&w=160&h=160&fit=crop&auto=format&q=92&s=b7f47cefe817c8e4d60e8fb6bc59312b', 'thumb': 'https://ksr-ugc.imgix.net/avatars/195345/mmotel_elan_lee_05_on_white_0592-2.original.jpg?v=1419440819&w=40&h=40&fit=crop&auto=format&q=92&s=fe45920ced0997320f5d5a60321fbde7'}}
 ```
 

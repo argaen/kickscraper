@@ -1,13 +1,18 @@
 from setuptools import setup
 
+with open('README.md', 'r') as readme:
+    README_TEXT = readme.read()
 
 setup(
     name='kickscraper',
-    version='0.1.3',
-    description='A scraper for Crowdfunding projects',
+    version='0.1.5',
+    description='A scraper for Crowdfunding platform projects like kickstarter',
+    long_description=README_TEXT,
+
     url='https://github.com/argaen/kickscraper',
 
     author='argaen',
+    author_email="manu.mirandad@gmail.com",
     license='MIT',
 
     keywords=['kickstarter api crowdfunding projects'],
