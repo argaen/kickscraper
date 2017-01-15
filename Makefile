@@ -6,3 +6,5 @@ pylint:
 
 acceptance:
 	pytest -sv tests/acceptance
+
+test: acceptance

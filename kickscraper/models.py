@@ -1,17 +1,10 @@
-from kickscraper.backends.models import BaseProject
-from kickscraper.backends.kickstarter import client
+from .client import KickStarterClient
 
 
-class KickStarterProject(BaseProject):
-
-    attributes_mapping = {
-        'uid': 'id',
-        'title': 'name',
-        'launched': 'launched_at',
-    }
+class Project:
 
     def __init__(self, name):
-        self.name = name
+        self._search_by = name
         self.project_json = None
         self._rewards = None
         self._early_birds = None
@@ -19,11 +12,11 @@ class KickStarterProject(BaseProject):
 
     @property
     def uid(self):
-        return self._get_data('uid')
+        return self._get_data('id')
 
     @property
-    def title(self):
-        return self._get_data('title')
+    def name(self):
+        return self._get_data('name')
 
     @property
     def photo(self):
@@ -46,8 +39,8 @@ class KickStarterProject(BaseProject):
         return self._get_data('currency')
 
     @property
-    def launched(self):
-        return self._get_data('launched')
+    def launched_at(self):
+        return self._get_data('launched_at')
 
     @property
     def deadline(self):
@@ -60,26 +53,26 @@ class KickStarterProject(BaseProject):
     @property
     def rewards(self, force_reload=True):
         if not self._rewards or force_reload:
-            self._rewards = client.KickStarter().get_rewards(self.creator["slug"], self.slug)
+            self._rewards = KickStarterClient().get_rewards(self.creator["slug"], self.slug)
         return self._rewards
 
     @property
     def early_birds(self, force_reload=True):
         if not self._early_birds or force_reload:
-            self._early_birds = client.KickStarter().get_early_birds(self.creator["slug"], self.slug)
+            self._early_birds = KickStarterClient().get_early_birds(
+                self.creator["slug"], self.slug)
         return self._early_birds
 
-    def __getattr__(self, name):
-        return self._get_data(name)
+    def __getattr__(self, attr):
+        return self._get_data(attr)
 
     def _get_data(self, key):
         if not self.project_json:
             self._reload()
-        key = self.attributes_mapping.get(key) or key
         if key in self.project_json:
-            return self.project_json[self.attributes_mapping.get(key) or key]
+            return self.project_json[key]
         else:
-            raise AttributeError("KickStarterProject object has no attribute %s" % key)
+            raise AttributeError("Project object has no attribute %s" % key)
 
     def _reload(self):
-        self.project_json = client.KickStarter().search_project(self.name)
+        self.project_json = KickStarterClient().search_project(self._search_by)
