@@ -1,9 +1,6 @@
 # Kickscraper
 
-![https://travis-ci.org/argaen/kickscraper.svg?branch=master](https://travis-ci.org/argaen/kickscraper)
-![https://codecov.io/gh/argaen/kickscraper/branch/master/graph/badge.svg](https://codecov.io/gh/argaen/kickscraper)
-![https://badge.fury.io/py/kickscraper.svg](https://pypi.python.org/pypi/kickscraper)
-![https://img.shields.io/pypi/pyversions/kickscraper.svg](https://pypi.python.org/pypi/kickscraper)
+[![Build Status](https://travis-ci.org/argaen/kickscraper.svg?branch=master)](https://travis-ci.org/argaen/kickscraper)
 
 API to extract information about Kickstarter projects. The software works using undocumented APIs.
 
