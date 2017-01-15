@@ -1,16 +1,18 @@
-# KickScraper
+# Kickscraper
 
-This project offers an API to consult Kickstarter projects information. It does that by scrapping the website or accesing undocumented APIs so this software is provided as it is.
+![https://travis-ci.org/argaen/kickscraper.svg?branch=master](https://travis-ci.org/argaen/kickscraper)
+![https://codecov.io/gh/argaen/kickscraper/branch/master/graph/badge.svg](https://codecov.io/gh/argaen/kickscraper)
+![https://badge.fury.io/py/kickscraper.svg](https://pypi.python.org/pypi/kickscraper)
+![https://img.shields.io/pypi/pyversions/kickscraper.svg](https://pypi.python.org/pypi/kickscraper)
 
-To check everything is working correctly and the needed data is able to be pulled from the Kickstarter page, from the project root execute:
+API to extract information about Kickstarter projects. The software works using undocumented APIs.
 
-`PYTHONPATH=. py.test`
 
-To install, just execute:
 
-`pip install kickscraper`
 
 # Usage
+
+First you need to install the package with `pip install kickscraper`.
 
 The normal usage flow with this package is to search for a project and then access its information. Some examples:
 
@@ -61,7 +63,7 @@ The normal usage flow with this package is to search for a project and then acce
   'uid': '3571711'}}
 ```
 
-For the KickStarter backend, there is a `project_json` attribute that allows to retrieve the extra information retrieved from the query to the HTTP endpoint. You can also access this attributs in a normal way with `p.connector.<attribute_name>`.
+You can access the whole project as a dict using the `project_json` attribute.
 
 ```python
 >>> p.project_json["creator"]
@@ -82,24 +84,6 @@ There are also a couple endpoints that allow you to search for projects (`kicksc
 ```
 
 Internally, the `Project` class uses the `search_project` to fetch the project according to the given name. Be careful with this because you may be pulling the wrong project (i.e, for the _Kittens_ search I would expect to load the _Exploding Kittens_ first rather than _Laser Kittens_ project).
-
-# Class Reference
-
-## Project
-
-- **Project.uid: int**
-- **Project.title: str**
-- **Project.photo: dict**
-- **Project.pledged: float**
-- **Project.goal: float**
-- **Project.state: str**
-- **Project.currency: str**
-- **Project.launched: int (unix time)**
-- **Project.deadline: int (unix time)**
-- **Project.backers\_count: int**
-- **Project.rewards: dict**
-- **Project.early\_birds: dict**
-
 
 # TODO
 
