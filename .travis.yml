@@ -10,8 +10,4 @@ install:
 script:
   - make syntax
   - python setup.py develop
-  - pytest --cov-report term-missing --cov=aiocache -sv tests/ut
-  - bash examples/run_all.sh
-
-after_success:
-  - codecov
+  - pytest -sv tests
