@@ -42,7 +42,7 @@ class TestClient:
 
     @pytest.mark.parametrize("creator, project, expected, available, all_gone", [
         ("elanlee", "exploding-kittens", 2, 0, 2),
-        ("1902165813", "ayo-the-clown-inspired-by-super-mario", 12, 12, 0),
+        ("1902165813", "ayo-the-clown-inspired-by-super-mario", 12, 0, 12),
     ])
     def test_get_early_birds(self, client, creator, project, expected, available, all_gone):
         early_birds = client.get_early_birds(creator, project)
